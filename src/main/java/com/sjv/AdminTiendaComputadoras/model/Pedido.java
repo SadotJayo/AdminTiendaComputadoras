@@ -35,12 +35,12 @@ public class Pedido {
     Distrito distrito;
 
     @Column(name = "fecha_pedido")
-    private Date fechaPedido;
+    private String fechaPedido;
 
     public Pedido() {
     }
 
-    public Pedido(int idPedido, String nombreCliente, String apellidosCliente, String correo, String celular, String direccion, String referencia, Distrito distrito, Date fechaPedido) {
+    public Pedido(int idPedido, String nombreCliente, String apellidosCliente, String correo, String celular, String direccion, String referencia, Distrito distrito, String fechaPedido) {
         this.idPedido = idPedido;
         this.nombreCliente = nombreCliente;
         this.apellidosCliente = apellidosCliente;
@@ -116,11 +116,11 @@ public class Pedido {
         this.distrito = distrito;
     }
 
-    public Date getFechaPedido() {
+    public String getFechaPedido() {
         return fechaPedido;
     }
 
-    public void setFechaPedido(Date fechaPedido) {
+    public void setFechaPedido(String fechaPedido) {
         this.fechaPedido = fechaPedido;
     }
 }

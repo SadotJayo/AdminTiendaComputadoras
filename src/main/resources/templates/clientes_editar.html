@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+<head th:replace="fragmentos/head :: head"></head>
+<body>
+<div th:replace="fragmentos/sidebar :: sidebar"></div>
+<div class="wrapper d-flex flex-column min-vh-100 bg-light">
+    <header th:replace="fragmentos/header :: header"></header>
+    <div class="body flex-grow-1 px-3">
+        <div class="container">
+            <h1 class="mb-4">Actualizar Cliente</h1>
+            <div class="docs-example">
+                <form action="#" th:action="@{/guardarCliente}" th:object="${cliente}" method="POST">
+                    <input type="hidden" th:field="*{idCliente}">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="nombres" th:field="*{nombres}" placeholder="Nombres del cliente">
+                        <label for="nombres">Nombres</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="apellidos" th:field="*{apellidos}" placeholder="Apellidos del cliente">
+                        <label for="apellidos">Apellidos</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="direccion" th:field="*{direccion}" placeholder="Dirección">
+                        <label for="direccion">Dirección</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="referencia" th:field="*{referencia}" placeholder="Referencia">
+                        <label for="referencia">Referencia</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="telefono" th:field="*{telefono}" placeholder="Teléfono">
+                        <label for="telefono">Teléfono</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="celular" th:field="*{celular}" placeholder="Celular">
+                        <label for="celular">Celular</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <select class="form-control" id="distrito" th:field="*{distrito}">
+                            <option value="">Seleccione un distrito</option>
+                            <option th:each="c: ${distritos}" th:value="${c.idDistrito}" th:text="${c.distrito}" />
+                        </select>
+                        <label for="distrito">Distrito</label>
+                    </div>
+                    <div>
+                        <button type="submit" class="btn btn-success mb-3">Guardar</button>
+                        <a th:href="@{/clientes}" class="btn btn-dark mb-3">Cancelar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <footer th:replace="fragmentos/footer :: footer"></footer>
+</div>
+<div th:replace="fragmentos/scripts :: scripts"></div>
+</body>
+</html>

@@ -10,5 +10,4 @@ public interface CategoriaService {
     List<Categoria> getAllCategorias();
     Categoria getCategoriaById(int id);
     Categoria saveCategoria(Categoria categoria);
-    Categoria updateCategoria(Categoria categoria, int id);
 }

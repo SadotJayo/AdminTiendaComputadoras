@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+<head th:replace="fragmentos/head :: head"></head>
+<body>
+<div th:replace="fragmentos/sidebar :: sidebar"></div>
+<div class="wrapper d-flex flex-column min-vh-100 bg-light">
+    <header th:replace="fragmentos/header :: header"></header>
+    <div class="body flex-grow-1 px-3">
+        <div class="container">
+            <h1 class="mb-4">Actualizar Categoría</h1>
+            <div class="docs-example">
+                <form action="#" th:action="@{/guardarCategoria}" th:object="${categoria}" method="POST">
+                    <input type="hidden" th:field="*{idCategoria}">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="descripcion" th:field="*{descripcion}" placeholder="Descripción de la categoría">
+                        <label for="descripcion">Descripción</label>
+                    </div>
+                    <div>
+                        <button type="submit" class="btn btn-success mb-3">Actualizar</button>
+                        <a th:href="@{/categorias}" class="btn btn-dark mb-3">Cancelar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <footer th:replace="fragmentos/footer :: footer"></footer>
+</div>
+<div th:replace="fragmentos/scripts :: scripts"></div>
+</body>
+</html>

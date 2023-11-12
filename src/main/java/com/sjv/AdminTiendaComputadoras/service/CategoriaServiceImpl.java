@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CategoriaServiceImpl implements CategoriaService {
@@ -18,16 +19,19 @@ public class CategoriaServiceImpl implements CategoriaService {
 
     @Override
     public Categoria getCategoriaById(int id) {
-        return null;
+        Optional<Categoria> optional = repository.findById(id);
+        Categoria categoria = null;
+        if(optional.isPresent()){
+            categoria = optional.get();
+        }else {
+            throw new RuntimeException("La categoría no se encuentra");
+        }
+        return categoria;
     }
 
     @Override
     public Categoria saveCategoria(Categoria categoria) {
-        return null;
+        return repository.save(categoria);
     }
 
-    @Override
-    public Categoria updateCategoria(Categoria categoria, int id) {
-        return null;
-    }
 }

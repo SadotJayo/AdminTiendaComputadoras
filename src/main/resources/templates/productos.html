@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+<head th:replace="fragmentos/head :: head"></head>
+<body>
+<div th:replace="fragmentos/sidebar :: sidebar"></div>
+<div class="wrapper d-flex flex-column min-vh-100 bg-light">
+    <header th:replace="fragmentos/header :: header"></header>
+    <div class="body flex-grow-1 px-3">
+        <div class="container-lg">
+            <h1>Productos</h1>
+            <div style="margin: 20px 0;">
+                <a th:href="@{/nuevoProducto}" class="btn btn-dark">Nuevo producto</a>
+            </div>
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Título</th>
+                    <th>Descripción</th>
+                    <th>Imagen</th>
+                    <th>Marca</th>
+                    <th>Stock</th>
+                    <th>Precio Unitario</th>
+                    <th>Categoría</th>
+                    <th class="text-center">Acciones</th>
+                </tr>
+                </thead>
+                <tbody style="background-color: #fff;">
+                <tr th:each="obj:${listProductos}">
+                    <td th:text="${obj.idProducto}"></td>
+                    <td th:text="${obj.titulo}"></td>
+                    <td th:text="${obj.descripcion}"></td>
+                    <td th:text="${obj.imagen}"></td>
+                    <td th:text="${obj.marca}"></td>
+                    <td th:text="${obj.stock}"></td>
+                    <td th:text="${obj.precioUnitario}"></td>
+                    <td th:text="${obj.categoria.descripcion}"></td>
+                    <td th:align="center"><a th:href="@{/editarProducto/{id}(id=${obj.idProducto})}" class="btn btn-dark">Editar</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <footer th:replace="fragmentos/footer :: footer"></footer>
+</div>
+<div th:replace="fragmentos/scripts :: scripts"></div>
+</body>
+</html>

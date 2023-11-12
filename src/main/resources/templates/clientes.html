@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="en">
+<head th:replace="fragmentos/head :: head"></head>
+<body>
+<div th:replace="fragmentos/sidebar :: sidebar"></div>
+<div class="wrapper d-flex flex-column min-vh-100 bg-light">
+    <header th:replace="fragmentos/header :: header"></header>
+    <div class="body flex-grow-1 px-3">
+        <div class="container-lg">
+            <h1>Clientes</h1>
+            <div style="margin: 20px 0;">
+                <a th:href="@{/nuevoCliente}" class="btn btn-dark">Nuevo cliente</a>
+            </div>
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Nombres</th>
+                    <th>Apellidos</th>
+                    <th>Dirección</th>
+                    <th>Referencia</th>
+                    <th>Teléfono</th>
+                    <th>Celular</th>
+                    <th>Distrito</th>
+                    <th class="text-center">Acciones</th>
+                </tr>
+                </thead>
+                <tbody style="background-color: #fff;">
+                <tr th:each="obj:${listClientes}">
+                    <td th:text="${obj.idCliente}"></td>
+                    <td th:text="${obj.nombres}"></td>
+                    <td th:text="${obj.apellidos}"></td>
+                    <td th:text="${obj.direccion}"></td>
+                    <td th:text="${obj.referencia}"></td>
+                    <td th:text="${obj.telefono}"></td>
+                    <td th:text="${obj.celular}"></td>
+                    <td th:text="${obj.distrito.distrito}"></td>
+                    <td th:align="center"><a th:href="@{/editarCliente/{id}(id=${obj.idCliente})}" class="btn btn-dark">Editar</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <footer th:replace="fragmentos/footer :: footer"></footer>
+</div>
+<div th:replace="fragmentos/scripts :: scripts"></div>
+</body>
+</html>
